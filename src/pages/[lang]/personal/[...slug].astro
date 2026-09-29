@@ -1,9 +1,10 @@
 ---
-import Layout from '../../../layouts/Layout.astro'
+import PersonalCollectionLayout from '../../../layouts/PersonalCollectionLayout.astro'
+
 import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
-  const pages = await getCollection('blog')
+  const pages = await getCollection('personal')
   
   const paths = pages.map((page: any) => {
     const [lang, ...slug] = page.id.split("/")
@@ -24,8 +25,8 @@ const page: any = Astro.props
 const formattedDate = page.data.date.toLocaleString(lang)
 const { Content } = await render(page)
 ---
-<Layout>
+<PersonalCollectionLayout>
   <h1>{page.data.title}</h1>
   <p>by {page.data.author} | {formattedDate}</p>
   <Content />
-</Layout>
+</PersonalCollectionLayout>

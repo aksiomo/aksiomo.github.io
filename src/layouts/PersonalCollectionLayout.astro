@@ -1,0 +1,14 @@
+---
+import RootLayout from "./RootLayout.astro"
+import PersonalCollectionHeader from "../components/PersonalCollectionHeader.astro"
+
+const { lang } = Astro.params
+---
+
+<RootLayout>
+  <div class="min-h-screen">
+    <PersonalCollectionHeader />
+    <slot />
+    <!-- <footer></footer> -->
+  </div>
+</RootLayout>

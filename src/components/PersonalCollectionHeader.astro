@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content"
+
+import titleLogo from "../assets/title.png"
+
+const pages = await getCollection("personal")
+const subCollections = (pages.map((page) => {
+  const segments = page.id.split("/")
+  return segments.length > 2 ? {
+    name: segments[1],
+    path: segments.slice(2, segments.length).join("/")
+  } : null
+}).filter((subCollection) => subCollection !== null))
+
+const langs = [...new Set(pages.map((page) => page.id.split("/")[0]))]
+
+const { lang } = Astro.params
+---
+
+<header>
+  <nav class="h-[60px] flex justify-between items-center bg-white px-4 border-b border-gray-200">
+    <a href={`/${lang}/personal`}>
+      <img src={titleLogo.src} alt="title logo" class="h-[50px] w-auto" />
+    </a>
+    <div class="flex flex-row-reverse items-center gap-2">
+      <div class="relative" data-lang-selector>
+        <a class="cursor-pointer" data-lang-toggle>{lang}</a>
+        <div class="absolute top-0 left-0 w-full bg-white shadow-md transition-all duration-300 hidden" data-lang-menu>
+          <ul>
+            {
+              langs.map((targetLang) => {
+                const segments = Astro.url.pathname.split("/")
+                segments[1] = targetLang
+                const path = segments.join("/")
+                return (<li>
+                  <a href={path}>{targetLang}</a>
+                </li>)
+              })
+            }
+          </ul>
+        </div>
+      </div>
+      {
+        subCollections.map((subCollection) => (
+          <a href={`/${lang}/personal/${subCollection.path}`}>{subCollection.name}</a>
+        ))
+      }
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.querySelectorAll("[data-lang-selector]")?.forEach((root) => {
+    const toggle = root.querySelector("[data-lang-toggle]")
+    const menu = root.querySelector("[data-lang-menu]")
+    toggle?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden")
+    })
+  })
+</script>

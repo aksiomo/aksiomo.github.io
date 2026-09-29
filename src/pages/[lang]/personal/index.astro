@@ -1,0 +1,19 @@
+---
+import PersonalCollectionLayout from "../../../layouts/PersonalCollectionLayout.astro"
+
+import { getCollection } from "astro:content"
+
+export async function getStaticPaths() {
+  const pages = await getCollection("personal")
+  const langs = [...new Set(pages.map((page) => page.id.split("/")[0]))]
+  return langs.map((lang) => ({
+    params: { lang }
+  }))
+}
+
+const { lang } = Astro.params
+---
+
+<PersonalCollectionLayout>
+  <h1>Personal Collection</h1>
+</PersonalCollectionLayout>
