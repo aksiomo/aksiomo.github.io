@@ -13,9 +13,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/ts-plugin": "^1.10.12",
     "astro": "^7.3.5"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "oxlint": "^1.85.0",
+    "prettier": "^3.9.9"
   }
 }
