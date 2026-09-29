@@ -1,0 +1,55 @@
+---
+import {
+  formatPersonalDate,
+  personalHref,
+  personalLabel,
+  personalSubCollection,
+  type PersonalEntry,
+} from '../lib/personal'
+
+interface Props {
+  posts: PersonalEntry[]
+  lang?: string
+  showCollection?: boolean
+}
+
+const { posts, lang, showCollection = false } = Astro.props
+---
+
+{
+  posts.length === 0 ? (
+    <p class="rounded-xl border border-dashed border-stone-300 bg-white px-5 py-10 text-center text-sm text-stone-500">
+      No articles yet.
+    </p>
+  ) : (
+    <ul class="overflow-hidden rounded-xl border border-stone-200 bg-white">
+      {posts.map((post) => {
+        const subCollection = personalSubCollection(post)
+        return (
+          <li class="border-b border-stone-100 last:border-b-0">
+            <a
+              href={personalHref(post)}
+              class="block px-5 py-4 transition-colors hover:bg-stone-50"
+            >
+              <div class="flex items-baseline justify-between gap-4">
+                <h2 class="text-lg font-medium text-stone-900">{post.data.title}</h2>
+                <time
+                  datetime={post.data.date.toISOString()}
+                  class="shrink-0 text-sm text-stone-500"
+                >
+                  {formatPersonalDate(post.data.date, lang)}
+                </time>
+              </div>
+              <p class="mt-1 text-sm text-stone-600">{post.data.description}</p>
+              {showCollection && subCollection && (
+                <p class="mt-2 text-xs capitalize tracking-wide text-stone-400">
+                  {personalLabel(subCollection)}
+                </p>
+              )}
+            </a>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}

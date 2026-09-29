@@ -1,32 +1,61 @@
 ---
-import PersonalCollectionLayout from '../../../layouts/PersonalCollectionLayout.astro'
-
 import { getCollection, render } from 'astro:content'
+
+import PersonalCollectionLayout from '../../../layouts/PersonalCollectionLayout.astro'
+import {
+  formatPersonalDate,
+  personalLabel,
+  personalSubCollection,
+} from '../../../lib/personal'
 
 export async function getStaticPaths() {
   const pages = await getCollection('personal')
-  
-  const paths = pages.map((page: any) => {
-    const [lang, ...slug] = page.id.split("/")
+
+  return pages.map((page) => {
+    const [lang, ...slug] = page.id.split('/')
     return {
       params: {
         lang,
-        slug: slug.join("/") || undefined
+        slug: slug.join('/') || undefined,
       },
-      props: page
+      props: page,
     }
   })
-
-  return paths
 }
 
-const { lang, slug } = Astro.params
-const page: any = Astro.props
-const formattedDate = page.data.date.toLocaleString(lang)
+const { lang } = Astro.params
+const page = Astro.props
+const formattedDate = formatPersonalDate(page.data.date, lang)
+const subCollection = personalSubCollection(page)
 const { Content } = await render(page)
 ---
+
 <PersonalCollectionLayout>
-  <h1>{page.data.title}</h1>
-  <p>by {page.data.author} | {formattedDate}</p>
-  <Content />
+  <article>
+    {
+      subCollection && (
+        <p class="mb-3 text-sm text-stone-500">
+          <a href={`/${lang}/personal`} class="hover:text-stone-900">
+            Personal
+          </a>
+          <span class="px-1.5">/</span>
+          <a
+            href={`/${lang}/personal/${subCollection}`}
+            class="capitalize hover:text-stone-900"
+          >
+            {personalLabel(subCollection)}
+          </a>
+        </p>
+      )
+    }
+    <h1 class="text-3xl font-semibold tracking-tight">{page.data.title}</h1>
+    <p class="mt-2 text-sm text-stone-500">
+      by {page.data.author}
+      <span class="px-1.5">·</span>
+      <time datetime={page.data.date.toISOString()}>{formattedDate}</time>
+    </p>
+    <div class="markdown mt-8 leading-7 text-stone-800">
+      <Content />
+    </div>
+  </article>
 </PersonalCollectionLayout>

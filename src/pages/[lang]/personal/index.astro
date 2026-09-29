@@ -1,19 +1,25 @@
 ---
-import PersonalCollectionLayout from "../../../layouts/PersonalCollectionLayout.astro"
+import { getCollection } from 'astro:content'
 
-import { getCollection } from "astro:content"
+import PersonalArticleList from '../../../components/PersonalArticleList.astro'
+import PersonalCollectionLayout from '../../../layouts/PersonalCollectionLayout.astro'
+import { personalLang, sortByDateDesc } from '../../../lib/personal'
 
 export async function getStaticPaths() {
-  const pages = await getCollection("personal")
-  const langs = [...new Set(pages.map((page) => page.id.split("/")[0]))]
+  const pages = await getCollection('personal')
+  const langs = [...new Set(pages.map((page) => personalLang(page)))]
   return langs.map((lang) => ({
-    params: { lang }
+    params: { lang },
   }))
 }
 
 const { lang } = Astro.params
+const posts = (await getCollection('personal'))
+  .filter((page) => personalLang(page) === lang)
+  .sort(sortByDateDesc)
 ---
 
 <PersonalCollectionLayout>
-  <h1>Personal Collection</h1>
+  <h1 class="mb-8 text-3xl font-semibold tracking-tight">Personal Collection</h1>
+  <PersonalArticleList posts={posts} lang={lang} showCollection />
 </PersonalCollectionLayout>

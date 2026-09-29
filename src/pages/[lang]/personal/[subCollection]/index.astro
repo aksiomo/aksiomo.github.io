@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content'
+
+import PersonalArticleList from '../../../../components/PersonalArticleList.astro'
+import PersonalCollectionLayout from '../../../../layouts/PersonalCollectionLayout.astro'
+import {
+  personalLabel,
+  personalLang,
+  personalSubCollection,
+  sortByDateDesc,
+} from '../../../../lib/personal'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('personal')
+  const seen = new Set<string>()
+  const paths = []
+
+  for (const page of pages) {
+    const lang = personalLang(page)
+    const subCollection = personalSubCollection(page)
+    if (!subCollection) continue
+    const key = `${lang}/${subCollection}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    paths.push({ params: { lang, subCollection } })
+  }
+
+  return paths
+}
+
+const { lang, subCollection = '' } = Astro.params
+const posts = (await getCollection('personal'))
+  .filter(
+    (page) =>
+      personalLang(page) === lang && personalSubCollection(page) === subCollection,
+  )
+  .sort(sortByDateDesc)
+---
+
+<PersonalCollectionLayout>
+  <header class="mb-8">
+    <p class="mb-2 text-sm text-stone-500">
+      <a href={`/${lang}/personal`} class="hover:text-stone-900">Personal</a>
+    </p>
+    <h1 class="text-3xl font-semibold capitalize tracking-tight">
+      {personalLabel(subCollection)}
+    </h1>
+  </header>
+  <PersonalArticleList posts={posts} lang={lang} />
+</PersonalCollectionLayout>
