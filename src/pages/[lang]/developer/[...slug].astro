@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content'
+
+import DeveloperCollectionLayout from '../../../layouts/DeveloperCollectionLayout.astro'
+import {
+  formatDeveloperDate,
+  developerLabel,
+  developerSubCollection,
+} from '../../../lib/developer'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('developer')
+
+  return pages.map((page) => {
+    const [lang, ...slug] = page.id.split('/')
+    return {
+      params: {
+        lang,
+        slug: slug.join('/') || undefined,
+      },
+      props: page,
+    }
+  })
+}
+
+const { lang } = Astro.params
+const page = Astro.props
+const formattedDate = formatDeveloperDate(page.data.date, lang)
+const subCollection = developerSubCollection(page)
+const aiScopeDesc = page.data['ai-scope-desc']
+const { Content } = await render(page)
+---
+
+<DeveloperCollectionLayout>
+  <article>
+    {subCollection && (
+      <p class="mb-3 text-sm text-stone-500">
+        <a href={`/${lang}/developer`} class="hover:text-stone-900">
+          Developer
+        </a>
+        <span class="px-1.5">/</span>
+        <a
+          href={`/${lang}/developer/${subCollection}`}
+          class="capitalize hover:text-stone-900"
+        >
+          {developerLabel(subCollection)}
+        </a>
+      </p>
+    )}
+    <h1 class="text-3xl font-semibold tracking-tight">{page.data.title}</h1>
+    <p class="mt-2 text-sm text-stone-500">
+      by {page.data.author}
+      <span class="px-1.5">·</span>
+      <time datetime={page.data.date.toISOString()}>{formattedDate}</time>
+    </p>
+    {aiScopeDesc && (
+      <blockquote class="mt-4 border-l-4 border-stone-300 bg-stone-100/80 px-4 py-3 text-sm text-stone-600">
+        <span class="font-medium text-stone-700">AI-Scope</span>
+        <span class="px-1.5 text-stone-400">·</span>
+        {aiScopeDesc}
+      </blockquote>
+    )}
+    <div class="prose prose-stone mt-8">
+      <Content />
+    </div>
+  </article>
+</DeveloperCollectionLayout>

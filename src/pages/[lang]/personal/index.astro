@@ -13,6 +13,16 @@ export async function getStaticPaths() {
   }))
 }
 
+type LangProp = 'zh-cn' | 'en' | 'eo'
+
+const localTranslated = {
+  title: {
+    'zh-cn': '个人合集',
+    'en': 'Personal Collection',
+    'eo': 'Persona Collection'
+  }
+}
+
 const { lang } = Astro.params
 const posts = (await getCollection('personal'))
   .filter((page) => personalLang(page) === lang)
@@ -21,7 +31,7 @@ const posts = (await getCollection('personal'))
 
 <PersonalCollectionLayout>
   <h1 class="mb-8 text-3xl font-semibold tracking-tight">
-    Personal Collection
+    {localTranslated.title[lang as LangProp]}
   </h1>
   <PersonalArticleList posts={posts} lang={lang} showCollection />
 </PersonalCollectionLayout>

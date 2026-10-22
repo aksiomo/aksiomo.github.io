@@ -21,6 +21,7 @@ const developer = defineCollection({
     description: z.string(),
     tags: z.array(z.string()),
     date: z.date(),
+    'ai-scope-desc': z.string().optional(),
   }),
 })
 

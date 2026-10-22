@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content'
+
+import DeveloperArticleList from '../../../../components/DeveloperArticleList.astro'
+import DeveloperCollectionLayout from '../../../../layouts/DeveloperCollectionLayout.astro'
+import {
+  developerLabel,
+  developerLang,
+  developerSubCollection,
+  sortByDateDesc,
+} from '../../../../lib/developer'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('developer')
+  const seen = new Set<string>()
+  const paths = []
+
+  for (const page of pages) {
+    const lang = developerLang(page)
+    const subCollection = developerSubCollection(page)
+    if (!subCollection) continue
+    const key = `${lang}/${subCollection}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    paths.push({ params: { lang, subCollection } })
+  }
+
+  return paths
+}
+
+const { lang, subCollection = '' } = Astro.params
+const posts = (await getCollection('developer'))
+  .filter(
+    (page) =>
+      developerLang(page) === lang &&
+      developerSubCollection(page) === subCollection,
+  )
+  .sort(sortByDateDesc)
+---
+
+<DeveloperCollectionLayout>
+  <header class="mb-8">
+    <p class="mb-2 text-sm text-stone-500">
+      <a href={`/${lang}/developer`} class="hover:text-stone-900">
+        Developer
+      </a>
+    </p>
+    <h1 class="text-3xl font-semibold capitalize tracking-tight">
+      {developerLabel(subCollection)}
+    </h1>
+  </header>
+  <DeveloperArticleList posts={posts} lang={lang} />
+</DeveloperCollectionLayout>

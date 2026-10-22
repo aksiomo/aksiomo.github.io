@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content'
+
+import DeveloperArticleList from '../../../components/DeveloperArticleList.astro'
+import DeveloperCollectionLayout from '../../../layouts/DeveloperCollectionLayout.astro'
+import { developerLang, sortByDateDesc } from '../../../lib/developer'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('developer')
+  const langs = [...new Set(pages.map((page) => developerLang(page)))]
+  return langs.map((lang) => ({
+    params: { lang },
+  }))
+}
+
+type LangProp = 'zh-cn' | 'en' | 'eo'
+
+const localTranslated = {
+  title: {
+    'zh-cn': '技术合集',
+    'en': 'Developer Collection',
+    'eo': 'Developer Collection'
+  }
+}
+
+const { lang } = Astro.params
+const posts = (await getCollection('developer'))
+  .filter((page) => developerLang(page) === lang)
+  .sort(sortByDateDesc)
+---
+
+<DeveloperCollectionLayout>
+  <h1 class="mb-8 text-3xl font-semibold tracking-tight">
+    {localTranslated.title[lang as LangProp]}
+  </h1>
+  <DeveloperArticleList posts={posts} lang={lang} showCollection />
+</DeveloperCollectionLayout>

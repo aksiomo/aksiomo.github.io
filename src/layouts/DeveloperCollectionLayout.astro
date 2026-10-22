@@ -1,0 +1,15 @@
+---
+import RootLayout from './RootLayout.astro'
+import DeveloperCollectionHeader from '../components/DeveloperCollectionHeader.astro'
+import DeveloperCollectionFooter from '../components/DeveloperCollectionFooter.astro'
+---
+
+<RootLayout>
+  <div class="flex min-h-screen flex-col bg-stone-50 text-stone-900">
+    <DeveloperCollectionHeader />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-10">
+      <slot />
+    </main>
+    <DeveloperCollectionFooter />
+  </div>
+</RootLayout>
