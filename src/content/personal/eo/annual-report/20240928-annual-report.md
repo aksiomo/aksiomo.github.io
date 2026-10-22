@@ -3,7 +3,7 @@ title: '2024 Persona jara raporto'
 author: 'Aksiomo Luna'
 date: 2024-09-28
 description: 'Jara raporto'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 ## Antauxparolo
@@ -34,7 +34,7 @@ Por ke la malpleno cxesu mordi min, mi ofte povas nur pruntepreni muzikon kaj la
 
 ## Je la fino
 
-Suficxas. La nokto estas profunda kaj silenta, do mi haltu cxi tie. "Post katastrofo oni konas la spiriton de kavaliro; kun rekta koro oni poste konas sin mem." Mi finos per peco el *Legend of Mortal*, kiel kouragxigo al mi mem.
+Suficxas. La nokto estas profunda kaj silenta, do mi haltu cxi tie. "Post katastrofo oni konas la spiriton de kavaliro; kun rekta koro oni poste konas sin mem." Mi finos per peco el _Legend of Mortal_, kiel kouragxigo al mi mem.
 
 > "Cxi tio havas sencon.
 > Vi ne parolas. La tintado de kunfrapigxantaj glavoj estas la kriego de Zhao Huo, sonanta gxis la nuboj, por ke cxiuj sub la cxielo starigu la orelojn kaj auxskultu.

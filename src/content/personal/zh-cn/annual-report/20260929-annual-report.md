@@ -3,7 +3,7 @@ title: '2026 个人年度报告'
 author: 'Aksiomo Luna'
 date: 2026-09-29
 description: 'annual report'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 自古逢秋悲寂寥，不知不觉又见深秋。倘若人生拢共七十五载春秋，这一夜之后，便过去三分之一了。

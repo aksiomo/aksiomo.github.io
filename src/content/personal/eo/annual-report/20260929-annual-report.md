@@ -3,7 +3,7 @@ title: '2026 Persona jara raporto'
 author: 'Aksiomo Luna'
 date: 2026-09-29
 description: 'Jara raporto'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 De antikve, renkontante auxtunon, oni malgxoje sentas la solecon. Ne rimarkinte, profunda auxtuno denove estas cxi tie. Se vivo estas entute sepdek kvin printempoj kaj auxtunoj, tiam post cxi tiu nokto triono de gxi estos pasinta.

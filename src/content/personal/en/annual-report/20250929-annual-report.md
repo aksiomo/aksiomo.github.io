@@ -3,7 +3,7 @@ title: '2025 Personal Annual Report'
 author: 'Aksiomo Luna'
 date: 2025-09-29
 description: 'Annual report'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 > Skribas Antaux Cxio

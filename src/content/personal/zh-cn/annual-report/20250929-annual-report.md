@@ -3,7 +3,7 @@ title: '2025 个人年度报告'
 author: 'Aksiomo Luna'
 date: 2025-09-29
 description: 'annual report'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 > Skribas Antaux Cxio
@@ -11,14 +11,13 @@ tags: [ 'annual-report' ]
 > Nekredeble, mi estas 24-jara. La tempo ja fluas rapide.
 > En la nuna mondo, naciismo kreskas, dum internaciismo malfortigxas. Kiel idealisto, mi portas senplenda amegon kaj senloka idealon. Kaj mia idealo kaj la estonteco de la socio estas plenaj de grizo.
 > Sed la vivo dauxrigas, kaj mi tamen volas mondvojagxon, por rigardi kaj sperti.
-> Laste, mi volas lumkanti kanton de Beyond: 
+> Laste, mi volas lumkanti kanton de Beyond:
 
 > Vivcelo nur estas ribel'
 
 > Fierkora, spiritaltal,
 
 > Al la cxiel’ ni povas iri!
-
 
 ## 写在前面
 

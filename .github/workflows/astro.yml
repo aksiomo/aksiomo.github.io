@@ -4,7 +4,7 @@ name: Deploy Astro site to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   workflow_dispatch:
 
 permissions:
@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
         uses: withastro/action@v6
         with:
           # package.json engines require Node >=22.12.0. Astro 7 will not build on Node 20.
-          node-version: "22"
+          node-version: '22'
           # packageManager is "pnpm" with no version, so pin the major that understands allowBuilds.
           package-manager: pnpm@10
 

@@ -3,7 +3,7 @@ title: '2025 Persona jara raporto'
 author: 'Aksiomo Luna'
 date: 2025-09-29
 description: 'Jara raporto'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 > Skribas Antaux Cxio

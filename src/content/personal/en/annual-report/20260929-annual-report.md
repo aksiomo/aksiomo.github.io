@@ -3,7 +3,7 @@ title: '2026 Personal Annual Report'
 author: 'Aksiomo Luna'
 date: 2026-09-29
 description: 'Annual report'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 From ancient times, autumn has been met with grief at the loneliness. Without my noticing, deep autumn is here again. If a life is seventy-five springs and autumns in all, then after this night one third of it will have passed.

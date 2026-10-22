@@ -20,6 +20,8 @@ const posts = (await getCollection('personal'))
 ---
 
 <PersonalCollectionLayout>
-  <h1 class="mb-8 text-3xl font-semibold tracking-tight">Personal Collection</h1>
+  <h1 class="mb-8 text-3xl font-semibold tracking-tight">
+    Personal Collection
+  </h1>
   <PersonalArticleList posts={posts} lang={lang} showCollection />
 </PersonalCollectionLayout>

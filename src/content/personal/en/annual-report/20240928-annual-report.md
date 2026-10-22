@@ -3,7 +3,7 @@ title: '2024 Personal Annual Report'
 author: 'Aksiomo Luna'
 date: 2024-09-28
 description: 'Annual report'
-tags: [ 'annual-report' ]
+tags: ['annual-report']
 ---
 
 ## Before I begin
@@ -34,7 +34,7 @@ To let the emptiness stop eating at me, I can often only borrow music, and let t
 
 ## At the end
 
-Enough of this. The night is deep and still, so I will stop here. "After calamity, one knows a knight's spirit; with a right heart, one then knows oneself." I will close with a passage from *Legend of Mortal*, as a word of encouragement to myself.
+Enough of this. The night is deep and still, so I will stop here. "After calamity, one knows a knight's spirit; with a right heart, one then knows oneself." I will close with a passage from _Legend of Mortal_, as a word of encouragement to myself.
 
 > "All of this has meaning.
 > You do not speak. The clang of blades meeting is Zhao Huo's shout, ringing up to the clouds, meant to make everyone under heaven prick up their ears.
