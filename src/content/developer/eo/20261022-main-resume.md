@@ -484,11 +484,11 @@ ai-scope-desc: 'AI helpis pri traduko kaj enhav-organizado'
           <li>Varmomapoj kaj pluraj diagramoj; simulita servilo kaj vojigo per mediaj variabloj.</li>
         </ul>
         <p class="resume-links">
-          <span class="resume-link-label">Stack A</span>
+          <span class="resume-link-label">Deponejo 1</span>
           <a href="https://github.com/Lunaria-Moonstone/Data-Visualization-Site">https://github.com/Lunaria-Moonstone/Data-Visualization-Site</a>
         </p>
         <p class="resume-links">
-          <span class="resume-link-label">Stack B</span>
+          <span class="resume-link-label">Deponejo 2</span>
           <a href="https://github.com/Lunaria-Moonstone/Data-Visualization">https://github.com/Lunaria-Moonstone/Data-Visualization</a>
         </p>
       </article>

@@ -484,11 +484,11 @@ ai-scope-desc: 'AI 参与翻译与内容整理'
           <li>热力图与多图表；Mock 后端与环境变量路由。</li>
         </ul>
         <p class="resume-links">
-          <span class="resume-link-label">Stack A</span>
+          <span class="resume-link-label">仓库一</span>
           <a href="https://github.com/Lunaria-Moonstone/Data-Visualization-Site">https://github.com/Lunaria-Moonstone/Data-Visualization-Site</a>
         </p>
         <p class="resume-links">
-          <span class="resume-link-label">Stack B</span>
+          <span class="resume-link-label">仓库二</span>
           <a href="https://github.com/Lunaria-Moonstone/Data-Visualization">https://github.com/Lunaria-Moonstone/Data-Visualization</a>
         </p>
       </article>

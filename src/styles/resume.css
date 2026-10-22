@@ -264,17 +264,19 @@
   }
 
   .resume-jobs td + td {
-    margin-top: 0.12rem;
+    margin-top: 0.55rem;
   }
 
   .resume-jobs td::before {
     content: attr(data-label);
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
+    display: block;
+    margin-bottom: 0.12rem;
+    color: var(--resume-faint);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 }
 
@@ -484,7 +486,7 @@
   line-height: 1.35;
 }
 
-.resume-points {
+.resume ul.resume-points {
   margin-top: 0.7rem;
   padding-left: 1.05rem;
   color: var(--resume-soft);
