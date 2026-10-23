@@ -1,0 +1,533 @@
+/*
+  Resume blocks live in developer markdown (raw HTML inside .prose).
+  Classes are authored here so skill meters do not depend on Tailwind
+  scanning markdown, and so the stone palette stays aligned with the site.
+*/
+
+.prose:has(.resume) {
+  max-width: none;
+}
+
+.resume {
+  --resume-text: #1c1917;
+  --resume-soft: #44403c;
+  --resume-muted: #78716c;
+  --resume-faint: #a8a29e;
+  --resume-line: #e7e5e4;
+  --resume-wash: #f5f5f4;
+  --resume-paper: #ffffff;
+  --resume-expert: #1c1917;
+  --resume-proficient: #44403c;
+  --resume-familiar: #78716c;
+  --resume-aware: #a8a29e;
+  container-type: inline-size;
+  color: var(--resume-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.resume * {
+  box-sizing: border-box;
+}
+
+.resume h2,
+.resume h3,
+.resume p,
+.resume ul,
+.resume ol,
+.resume dl,
+.resume dd {
+  margin: 0;
+  padding: 0;
+}
+
+.resume ul,
+.resume ol {
+  list-style: none;
+}
+
+.resume a {
+  color: var(--resume-text);
+  text-decoration: underline;
+  text-decoration-color: #d6d3d1;
+  text-underline-offset: 0.18em;
+  overflow-wrap: anywhere;
+}
+
+.resume a:hover {
+  text-decoration-color: var(--resume-text);
+}
+
+.resume code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  padding: 0.05em 0.32em;
+  border-radius: 0.25rem;
+  background: var(--resume-wash);
+}
+
+.resume-intro {
+  padding: 1.2rem 1.15rem 1.1rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 0.75rem;
+  background: var(--resume-paper);
+  box-shadow: inset 0 3px 0 var(--resume-text);
+}
+
+.resume-name {
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.resume-role {
+  margin-top: 0.3rem;
+  color: var(--resume-soft);
+  font-size: 0.98rem;
+}
+
+.resume-facts {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.resume-facts dt {
+  color: var(--resume-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.resume-facts dd {
+  margin-top: 0.12rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.resume-lead {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--resume-line);
+  color: var(--resume-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.resume-section {
+  margin-top: 2.15rem;
+}
+
+.resume-section h2 {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--resume-line);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.resume-note-line {
+  margin: -0.35rem 0 0.85rem;
+  color: var(--resume-muted);
+  font-size: 0.8rem;
+}
+
+.resume-highlights {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.resume-highlights li {
+  padding: 0.85rem 0.9rem 0.9rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 0.75rem;
+  background: var(--resume-paper);
+}
+
+.resume-highlights h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.resume-highlights p {
+  margin-top: 0.35rem;
+  color: var(--resume-soft);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.resume-table-wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--resume-line);
+  border-radius: 0.75rem;
+  background: var(--resume-paper);
+}
+
+.resume-jobs {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resume-jobs th {
+  padding: 0.65rem 0.9rem;
+  background: var(--resume-wash);
+  color: var(--resume-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.resume-jobs td {
+  padding: 0.8rem 0.9rem;
+  border-top: 1px solid var(--resume-line);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  vertical-align: top;
+}
+
+.resume-jobs td:first-child {
+  color: var(--resume-muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.resume-jobs td:nth-child(2) {
+  font-weight: 600;
+}
+
+@container (min-width: 40rem) {
+  .resume-highlights {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resume-jobs {
+    table-layout: fixed;
+  }
+
+  .resume-jobs th:first-child,
+  .resume-jobs td:first-child {
+    width: 10.75rem;
+  }
+
+  .resume-jobs th:last-child,
+  .resume-jobs td:last-child {
+    width: 32%;
+  }
+}
+
+@container (max-width: 39.99rem) {
+  .resume-jobs thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .resume-jobs,
+  .resume-jobs tbody,
+  .resume-jobs tr,
+  .resume-jobs td {
+    display: block;
+    width: auto;
+  }
+
+  .resume-jobs tr {
+    padding: 0.8rem 0.95rem 0.85rem;
+  }
+
+  .resume-jobs tr + tr {
+    border-top: 1px solid var(--resume-line);
+  }
+
+  .resume-jobs td {
+    position: relative;
+    padding: 0;
+    border-top: 0;
+  }
+
+  .resume-jobs td:first-child {
+    white-space: normal;
+  }
+
+  .resume-jobs td + td {
+    margin-top: 0.55rem;
+  }
+
+  .resume-jobs td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.12rem;
+    color: var(--resume-faint);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.resume-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  margin-bottom: 0.85rem;
+  color: var(--resume-soft);
+  font-size: 0.75rem;
+}
+
+.resume-legend li {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.resume-swatch {
+  width: 0.85rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--resume-aware);
+}
+
+.resume-legend li[data-tier='expert'] .resume-swatch {
+  background: var(--resume-expert);
+}
+
+.resume-legend li[data-tier='proficient'] .resume-swatch {
+  background: var(--resume-proficient);
+}
+
+.resume-legend li[data-tier='familiar'] .resume-swatch {
+  background: var(--resume-familiar);
+}
+
+.resume-group {
+  padding: 0.9rem 0.95rem 1rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 0.75rem;
+  background: var(--resume-paper);
+}
+
+.resume-group + .resume-group {
+  margin-top: 0.7rem;
+}
+
+.resume-group h3 {
+  color: var(--resume-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.resume-skills {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.resume-skill-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.45rem 0.75rem;
+  align-items: baseline;
+}
+
+.resume-skill-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.resume-badge {
+  padding: 0.1rem 0.48rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 999px;
+  background: var(--resume-wash);
+  color: var(--resume-soft);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.resume-skill[data-tier='expert'] .resume-badge {
+  border-color: #d6d3d1;
+  background: var(--resume-text);
+  color: #fafaf9;
+}
+
+.resume-meter {
+  height: 0.42rem;
+  margin-top: 0.38rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eceae8;
+}
+
+.resume-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--resume-aware);
+}
+
+.resume-skill[data-tier='expert'] .resume-meter > span {
+  background: var(--resume-expert);
+}
+
+.resume-skill[data-tier='proficient'] .resume-meter > span {
+  background: var(--resume-proficient);
+}
+
+.resume-skill[data-tier='familiar'] .resume-meter > span {
+  background: var(--resume-familiar);
+}
+
+.resume-skill-note {
+  margin-top: 0.28rem;
+  color: var(--resume-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.resume-projects {
+  display: grid;
+  gap: 0.75rem;
+  counter-reset: resume-project;
+}
+
+.resume-project {
+  padding: 0.95rem 1rem 1rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 0.75rem;
+  background: var(--resume-paper);
+}
+
+.resume-project-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.resume-project h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.resume-project h3::before {
+  content: counter(resume-project, decimal-leading-zero);
+  counter-increment: resume-project;
+  margin-right: 0.45rem;
+  color: var(--resume-faint);
+  font-size: 0.84em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.resume-status {
+  flex: 0 0 auto;
+  padding: 0.12rem 0.48rem;
+  border: 1px solid var(--resume-line);
+  border-radius: 999px;
+  background: var(--resume-wash);
+  color: var(--resume-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+}
+
+.resume-status.is-open {
+  border-color: var(--resume-text);
+  background: var(--resume-text);
+  color: #fafaf9;
+}
+
+.resume-meta {
+  margin-top: 0.35rem;
+  color: var(--resume-muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.resume-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+
+.resume-tags li {
+  padding: 0.16rem 0.42rem;
+  border-radius: 0.35rem;
+  background: var(--resume-wash);
+  color: var(--resume-soft);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.resume ul.resume-points {
+  margin-top: 0.7rem;
+  padding-left: 1.05rem;
+  color: var(--resume-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  list-style: disc;
+}
+
+.resume-points li + li {
+  margin-top: 0.35rem;
+}
+
+.resume-links {
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.resume-links a {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.resume-link-label {
+  display: inline-block;
+  margin-right: 0.35rem;
+  color: var(--resume-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media print {
+  .resume-meter > span,
+  .resume-badge,
+  .resume-status,
+  .resume-swatch,
+  .resume-tags li {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
